@@ -78,6 +78,10 @@
     margin: 10px 15px;
     vertical-align: middle;
   }
+  .fareseau-facebook {
+    background: #3B5998;
+    color: white;
+  }
   
   .footer .footer-center i.fa-envelope {
     font-size: 17px;
