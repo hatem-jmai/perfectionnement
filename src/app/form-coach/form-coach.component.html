@@ -1,29 +1,68 @@
 
-<form>
+
+
+<form (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-group">
+      
         <div class="form-group">
             <label>First Name</label>
-            <input type="texte" class="form-control" id="first name" placeholder="Nom">
+            <input type="texte" ngModel name="nom" minlength="3" maxlength="10"
+            required #nom="ngModel" class="form-control" id="first name" placeholder="First Name">
+            <div class="alert alert-danger" *ngIf="!nom.valid && nom.touched" >
+            <div *ngIf="nom.errors.required"  >first name is required</div>      
+            <div *ngIf="nom.errors.minlength" >first name should be minimum 3 characters  </div>
+            </div>
         </div>
+
+
+
+
+
         <div class="form-group">
             <label>Last Name</label>
-            <input type="texte" class="form-control" id="last name" placeholder=" prenom">
+            <input type="texte" minlength="2" maxlength="10" class="form-control" ngModel name="last"
+            required #last="ngModel" id="last name" placeholder=" LastName">
+            <div class="alert alert-danger" *ngIf="!last.valid && last.touched" >
+              <div *ngIf="last.errors.required"  >Last name is required</div>      
+              <div *ngIf="last.errors.minlength" >Last name should be minimum 2 characters  </div>
+              </div>
         </div>
         
+
+
+
+          
         <div class="form-group">
-      <label for="inputState" >Gendre</label>
-      <select id="inputState" class="form-control">
-        <option selected>tap to chose</option>
+          
+      <label for="inputState" >Gendre</label> 
+      <img    src="https://scontent.ftun12-1.fna.fbcdn.net/v/t1.15752-9/82664008_478575936175033_616169262553235456_n.jpg?_nc_cat=110&_nc_oc=AQmZKnNXhdtegHPhYruQa_u0m41tnnyyEXT05zgvCycluSjgryU0kHfEv9VP59xv9_8&_nc_ht=scontent.ftun12-1.fna&oh=aea1c916d7c3ea1a6fbca707533156da&oe=5ED97193" 
+    align="right" >
+  
+      <select id="inputState" ngModel name="gendre"
+      required #gendre="ngModel" class="form-control" placeholder="tap to chose">
+        
         <option>Femme</option>
         <option>Homme</option>
       </select>
+      <div class="alert alert-danger" *ngIf="!gendre.valid && gendre.touched">
+        <div *ngIf="gendre.errors.required">gendre is required</div>
+      </div>
             </div>
+        
+
+
 
             <div class="form-group">
                 <label >Birthday Date</label>
-                <input class="form-control" type="date">
+                <input class="form-control" ngModel name="date"
+                required #date="ngModel" type="date">
+                <div class="alert alert-danger" *ngIf="!date.valid && date.touched">
+                  <div *ngIf="date.errors.required">Birthday date is required</div>
+                </div>
 
             </div>
+
+
 
 
 
@@ -34,18 +73,28 @@
          <div class="form-group">
         
             <label>Cin</label>
-            <input type="number" class="form-control" id="first name" placeholder="Cin">
-        
-    <small id="emailHelp" class="form-text text-muted">
-        Please add Number .</small>
-   
+            <input type="text" ngModel name="cin"
+            required minlength="8" maxlength="8" #cin="ngModel"  class="form-control" id="cin" placeholder="Cin">
+           <div class="alert alert-danger" *ngIf="!cin.valid && cin.touched">
+            
+          <div *ngIf="cin.errors.required"> Please add Number</div>
+          <div *ngIf="cin.errors.minlength"> cin should be 8 number</div>
+
+            </div>
+            
+          
+           <small id="emailHelp" class="form-text text-muted">
+        Please add Number .</small> 
 </div>
+
+
 
 
 
             <div class="form-group">
                 <label for="inputState" >Type coaching</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" ngModel name="type"
+                required #type="ngModel" class="form-control">
                   <option selected>tap to chose</option>
                   <option>Fitnesse</option>
                   <option>Gaming</option>
@@ -54,20 +103,40 @@
                   <option>Devloppment</option>
                   <option>Musique</option>
                 </select>
+                <div class="alert alert-danger" *ngIf="!type.valid && type.touched">
+                  <div *ngIf="type.errors.required">Coaching Type is required</div>
+                </div>
                       </div>
 
 
+
+                  
         <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+      <label >Email address</label>
+      <input type="text"  class="form-control" ngModel name="mail"
+      required email #mail="ngModel"  id="Email1"  
       placeholder="Enter email">
+      <div class="alert alert-danger" *ngIf="!mail.valid && mail.touched ">
+            
+        <div *ngIf="mail.errors.required"> Please add your mail </div>
+        <div *ngIf="mail.errors?.email">email invalid</div>
+          </div>
       <small id="emailHelp" class="form-text text-muted">
           We'll never share your email with anyone else.</small>
         </div>
    
+
+
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" class="form-control" ngModel name="password" 
+      required #password="ngModel" minlength="8" id="exampleInputPassword1" placeholder="Password">
+      <div class="alert alert-danger" *ngIf="!password.valid && password.touched" >
+        <div *ngIf="password.errors.required"  >Password is required</div>      
+        <div *ngIf="password.errors.minlength" >Password should be minimum 8 characters  </div>
+        </div>
+
+
     </div>
    
     
@@ -76,57 +145,76 @@
         <label >
             Phone Number
         </label>
-        <input class="form-control" type ="number" placeholder="+216">
+        <input class="form-control" ngModel name="tel"
+        required #tel="ngModel" type ="number" placeholder="+216">
+        <div *ngIf="!tel.valid && tel.touched" class="alert alert-danger">
+
+          <div *ngIf="tel.errors.required">Phone number is required
+
+          </div>
+
+</div>
     </div>
 
      
     <div class="form-group">
         <label for="inputState" >
             Governorate</label>
-        <select id="inputState" class="form-control">
-          <option selected>tap to chose</option>
+        <select id="inputState" required ngModel name="Gov" #Gov="ngModel" class="form-control">
+          
           <option>tunis</option>
           <option>ariana</option>
-         
         </select>
+        <div class="alert alert-danger" *ngIf="!Gov.valid && Gov.touched">
+          <div *ngIf="Gov.errors.required">Select Gouvernorat is required</div>
+        </div>
               </div>
               
+
+
     <div class="form-group">
         <label for="inputState" >
            Ville</label>
-        <select id="inputState" class="form-control">
-          <option selected>tap to chose</option>
-          <option></option>
-          <option></option>
-          <option></option>
-          <option></option>
+        <select id="inputState" class="form-control"  required ngModel name="Ville" #Ville="ngModel" >
+          
+          <option>sokra</option>
+          <option>manzah</option>
+          <option>omran</option>
+          <option>charguia</option>
         </select>
+        <div class="alert alert-danger" *ngIf="!Ville.valid && Ville.touched">
+          <div *ngIf="Ville.errors.required">Select Ville is required</div>
+        </div>
               </div>
     
     
     
               <div class="form-group">
-                <input type="file"  id="customFile">
-                <label class="form-control"
-                 for="customFile">Check your certificat</label>
+                
+                <label 
+                >Check your certificat</label>
+                <tr></tr>
+                <input ngModel
+                required #certif="ngModel" name="certif" type="file"  id="customFile">
+               
+                <div class="alert alert-danger" *ngIf="!certif.valid && certif.touched">
+                  <div *ngIf="certif.errors.required">please your certificat proffesionels </div>
+                </div>
               </div>
     
     
     
-    
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-
-
+ 
 
 
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary"
+    type="submit"[disabled]="f.invalid">Submit</button>
 </div>
     </div>
   </form>
+  
+  
   <a class="Follow" href="https://facebook.com/ahmed.nouri.7777019/" target="blank_"></a>
 
   

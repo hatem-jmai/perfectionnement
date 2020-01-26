@@ -1,1 +1,160 @@
-<p>form-client works!</p>
+
+
+
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-group">
+      
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="texte" ngModel name="nom" minlength="3" maxlength="10"
+            required #nom="ngModel" class="form-control" id="first name" placeholder="First Name">
+            <div class="alert alert-danger" *ngIf="!nom.valid && nom.touched" >
+            <div *ngIf="nom.errors.required"  >first name is required</div>      
+            <div *ngIf="nom.errors.minlength" >first name should be minimum 3 characters  </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="texte" minlength="2" maxlength="10" class="form-control" ngModel name="last"
+            required #last="ngModel" id="last name" placeholder=" LastName">
+            <div class="alert alert-danger" *ngIf="!last.valid && last.touched" >
+              <div *ngIf="last.errors.required"  >Last name is required</div>      
+              <div *ngIf="last.errors.minlength" >Last name should be minimum 2 characters  </div>
+              </div>
+        </div>
+        
+
+
+
+          
+        <div class="form-group">
+          
+      <label for="inputState" >Gendre</label> 
+      <img    src="https://scontent.ftun12-1.fna.fbcdn.net/v/t1.15752-9/58790332_465957034145204_5236821248549322752_n.jpg?_nc_cat=109&_nc_oc=AQkjgE77nQmKtC4F8bnEWOeuzKByhV1MBKodCKf3OGwEPSnH-l2baE13YO9n1AYtmN4&_nc_ht=scontent.ftun12-1.fna&oh=298613c1ebe87848c89588ef0a6dab74&oe=5ECE019B" 
+    align="right" height="600px" width="600px" >
+  
+      <select id="inputState" ngModel name="gendre"
+      required #gendre="ngModel" class="form-control" placeholder="tap to chose">
+        
+        <option>Femme</option>
+        <option>Homme</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="!gendre.valid && gendre.touched">
+        <div *ngIf="gendre.errors.required">gendre is required</div>
+      </div>
+            </div>
+        
+
+
+
+            <div class="form-group">
+                <label >Birthday Date</label>
+                <input class="form-control" ngModel name="date"
+                required #date="ngModel" type="date">
+                <div class="alert alert-danger" *ngIf="!date.valid && date.touched">
+                  <div *ngIf="date.errors.required">Birthday date is required</div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+         <div class="form-group">
+        
+            <label>Cin</label>
+            <input type="text" ngModel name="cin"
+            required minlength="8" maxlength="8" #cin="ngModel"  class="form-control" id="cin" placeholder="Cin">
+           <div class="alert alert-danger" *ngIf="!cin.valid && cin.touched">
+            
+          <div *ngIf="cin.errors.required"> Please add Number</div>
+          <div *ngIf="cin.errors.minlength"> cin should be 8 number</div>
+
+            </div>
+            
+          
+           <small id="emailHelp" class="form-text text-muted">
+        Please add Number .</small> 
+</div>
+
+
+
+
+
+                  
+        <div class="form-group">
+      <label >Email address</label>
+      <input type="text"  class="form-control" ngModel name="mail"
+      required email #mail="ngModel"  id="Email1"  
+      placeholder="Enter email">
+      <div class="alert alert-danger" *ngIf="!mail.valid && mail.touched ">
+            
+        <div *ngIf="mail.errors.required"> Please add your mail </div>
+        <div *ngIf="mail.errors?.email">email invalid</div>
+          </div>
+      <small id="emailHelp" class="form-text text-muted">
+          We'll never share your email with anyone else.</small>
+        </div>
+   
+
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" ngModel name="password" 
+      required #password="ngModel" minlength="8" id="exampleInputPassword1" placeholder="Password">
+      <div class="alert alert-danger" *ngIf="!password.valid && password.touched" >
+        <div *ngIf="password.errors.required"  >Password is required</div>      
+        <div *ngIf="password.errors.minlength" >Password should be minimum 8 characters  </div>
+        </div>
+
+
+    </div>
+   
+    
+    
+    
+
+     
+   
+    <div class="form-group">
+        <label>Adresse</label>
+        <input type="texte" ngModel name="nom" minlength="3" maxlength="10"
+        required #nom="ngModel" class="form-control" id="first name" placeholder="Adresse Client">
+        <div class="alert alert-danger" *ngIf="!nom.valid && nom.touched" >
+        <div *ngIf="nom.errors.required"  >Adresse is required</div>      
+        <div *ngIf="nom.errors.minlength" >Adresse should be minimum 3 characters  </div>
+        </div>
+    </div>
+
+
+  
+    
+    
+    
+    
+    
+    
+ 
+
+
+<div class="form-group">
+    <button class="btn btn-primary"
+    type="submit"[disabled]="f.invalid">Submit</button>
+</div>
+    </div>
+  </form>
+  
+  
+  <a class="Follow" href="https://facebook.com/ahmed.nouri.7777019/" target="blank_"></a>
+
+  
