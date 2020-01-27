@@ -4,10 +4,10 @@
        <!--   con = Container  for items in the form-->
        <div class="con">
        <!--     Start  header Content  -->
-       <header class="head-form">
-          <h2>Log In</h2>
+       <header >
+          <h2 class="head-form">Log In</h2>
           <!--     A welcome message or an explanation of the login form -->
-          <p>login here using your mail and password</p>
+          <p class="head-form">login here using your username and password</p>
        </header>
        <!--     End  header Content  -->
        <br>
@@ -18,7 +18,7 @@
                <i class="fa fa-user-circle"></i>
              </span>
             <!--   user name Input-->
-             <input class="form-input" id="txt-input" type="text" placeholder="@Mail" required>
+             <input class="form-input" id="txt-input" type="text" placeholder="username" [{ngModel}]="username" required>
          
           <br>
          
@@ -28,7 +28,7 @@
             <i class="fa fa-key"></i>
            </span>
           <!--   Password Input-->
-          <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+          <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" [{ngModel}]="password"  required>
          
     <!--      Show/hide password  -->
          <span>
@@ -60,33 +60,5 @@
       <!-- End Form -->
     </form>
     </div>
-
-    <script>
-    // Show/hide password onClick of button using Javascript only
-
-// https://stackoverflow.com/questions/31224651/show-hide-password-onclick-of-button-using-javascript-only
-
-function show() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'text');
-}
-
-function hide() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'password');
-}
-
-var pwShown = 0;
-
-document.getElementById("eye").addEventListener("click", function () {
-    if (pwShown == 0) {
-        pwShown = 1;
-        show();
-    } else {
-        pwShown = 0;
-        hide();
-    }
-}, false);
-
-
-    </script>
+   
+    
