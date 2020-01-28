@@ -8,9 +8,9 @@ import { LoginService } from '../login.service';
   providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
-  password:string;
+ /*  password:string;
   username:string;
-  login:string;
+  login:any; */
   constructor(private service:LoginService) { }
 
   ngOnInit() {
@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
                   }
                 }, false);  
             }
-connection(username,password):string{
- this.login=this.service.connection(username,password);
+connection(ch:string,ch1:string):any{
+ let a= this.service.connection(ch,ch1);
+ console.log(a);
+ return a;
 }
 
 }

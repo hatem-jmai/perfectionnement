@@ -7,7 +7,7 @@
        <header >
           <h2 class="head-form">Log In</h2>
           <!--     A welcome message or an explanation of the login form -->
-          <p class="head-form">login here using your username and password</p>
+          <p class="head-form">login here using your username and password {{connection()}}</p>
        </header>
        <!--     End  header Content  -->
        <br>
@@ -18,7 +18,7 @@
                <i class="fa fa-user-circle"></i>
              </span>
             <!--   user name Input-->
-             <input class="form-input" id="txt-input" type="text" placeholder="username" [{ngModel}]="username" required>
+             <input class="form-input" id="txt-input" type="text" placeholder="username" #username required>
          
           <br>
          
@@ -28,7 +28,7 @@
             <i class="fa fa-key"></i>
            </span>
           <!--   Password Input-->
-          <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" [{ngModel}]="password"  required>
+          <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" #password  required>
          
     <!--      Show/hide password  -->
          <span>
@@ -39,7 +39,7 @@
           <br>
     <!--        buttons -->
     <!--      button LogIn -->
-          <button class="log-in"> Log In </button>
+          <button class="log-in" (click)="connection(username.value,password.value)"> Log In </button>
        </div>
       
     <!--   other buttons -->

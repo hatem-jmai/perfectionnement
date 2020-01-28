@@ -14,4 +14,6 @@ errorMessage: any;
     return this.http.get(URL).subscribe(
       data => this.result = data,
                 error =>  this.errorMessage = <any>error); 
+                console.log(this.result);
+}
 }
