@@ -1,34 +1,24 @@
-.form-control{
-    width: 500px;
-}
-.form-check{
-    margin-left: 15px;
-
-}
-.alert{
-    width: 500px;
-}
-ng-valid[required], .ng-valid.required  {
-	border-left: 5px solid #42A948; /* green */
+.example-container {
+	display: flex;
+	flex-direction: column;
+	margin-left: 50px;
+	margin-top: 20px;
   }
   
-  .ng-invalid:not(form)  {
-	border-left: 5px solid #a94442; /* red */
+  .example-container > * {
+	width: 500px;
   }
-.img{
-    margin-left: 700px;
+
+
+.img{ margin-left: 700px;
     width: 300%;
-    height: 300%;
-}
+    height: 50%;}
 
 
-/*input.ng-valid { border: 2px solid green; }
-input.ng-invalid { border: 2px solid red; }*/
 
-.form-group{
-    margin-top: 10px;
-margin-left: 10px;
-}
+
+
+
 
 .Follow {	  background:url("https://scontent.ftun3-1.fna.fbcdn.net/v/t1.0-9/p960x960/70105106_1230151590479523_3782641799974092800_o.jpg?_nc_cat=100&_nc_oc=AQkUDcJ0ez_G6FHRSMzyxU8Cb_iqbs2LplGK7aUlUuQpd9XS0nE7Ss_8KJ_wt8PvZ88&_nc_ht=scontent.ftun3-1.fna&_nc_tp=1002&oh=6315dd2e3f5db2f4e87ceee32849d5b8&oe=5E91EADD")no-repeat center / contain;
 	width: 50px;
