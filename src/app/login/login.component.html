@@ -18,7 +18,7 @@
                <i class="fa fa-user-circle"></i>
              </span>
             <!--   user name Input-->
-             <input class="form-input" id="txt-input" type="text" placeholder="@Mail" required>
+             <input class="form-input" id="txt-input" type="text" [(ngModel)]="user.login" [ngModelOptions]="{standalone: true}" placeholder="@Mail" required>
          
           <br>
          
@@ -28,18 +28,18 @@
             <i class="fa fa-key"></i>
            </span>
           <!--   Password Input-->
-          <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+          <input class="form-input" type="password" placeholder="Password" id="pwd" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" name="password" required>
          
     <!--      Show/hide password  -->
          <span>
-            <i class="fa fa-eye" aria-hidden="true"  type="button"    id="eye"></i>
+            <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
          </span>
          
          
           <br>
     <!--        buttons -->
     <!--      button LogIn -->
-          <button class="log-in" (click)="login()"> Log In </button>
+          <button class="log-in"  (click)="login()"> Log In </button>
        </div>
       
     <!--   other buttons -->

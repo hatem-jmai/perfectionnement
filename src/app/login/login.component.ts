@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { coach } from '../service/entity/coach';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,17 @@ import { coach } from '../service/entity/coach';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user:coach;
-  log:string;
-  password:string;
-  constructor(private userService: AuthService) { }
+  user: coach ;
+  result:object;
+  constructor(private userService: AuthService,private router: Router) { }
 
   ngOnInit() {
+    this.user =new coach();
+    
   }
   login(){
-    
-    this.userService.loginCoach().subscribe(data => console.log(data), 
-    error1 => console.log(error1));
+   this.result= this.userService.loginCoach(this.user).subscribe(data => console.log(data), error1 => console.log(error1));  
+    this.router.navigate(['/acceuil']);   
   }
+  
 }
