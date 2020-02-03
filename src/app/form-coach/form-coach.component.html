@@ -11,8 +11,9 @@
   
   <mat-form-field>
     <mat-select placeholder="Gendre" [(ngModel)]="user.genre">
-      <mat-option value="option">Women</mat-option>
-      <mat-option value="option">Man</mat-option>
+      <mat-option *ngFor="let genre of gendre" [value]="genre">
+        {{genre.viewValue}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -28,8 +29,9 @@
 
   <mat-form-field>
     <mat-select placeholder="Type" [(ngModel)]="user.type">
-      <mat-option value="option">Fitness</mat-option>
-      <mat-option value="option">Gaming</mat-option>
+      <mat-option *ngFor="let type of types" [value]="type.viewValue">
+        {{type.viewValue}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -44,29 +46,33 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [formControl]="select"
+    <input matInput 
     placeholder="Phone Number" type="number" class="example-left-align"
      name="tel" [(ngModel)]="user.tel" ng-minlength = "8"
     ng-maxlength = "8">
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Gouvernorat" [(ngModel)]="user.gouernorat">
-      <mat-option value="option">tunis</mat-option>
-      <mat-option value="option">Ariana</mat-option>
+    <mat-select placeholder="Gouvernorat" [(ngModel)]="user.gouernorat"> 
+      <mat-option *ngFor="let gouvernerat of gouvernerats" [value]="gouvernerat.viewValue">
+      {{gouvernerat.viewValue}}
+    </mat-option>
     </mat-select>
+  
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Ville" [(ngModel)]="user.ville">
-      <mat-option value="option">sokra</mat-option>
-      <mat-option value="option">hay tadhamen</mat-option>
+    <mat-select placeholder="Ville" [(ngModel)]="user.ville" >
+      <mat-option *ngFor="let Ville of villes" [value]="Ville.viewValue">
+        {{Ville.viewValue}}
+      </mat-option>
     </mat-select>
+ 
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="certificat" [(ngModel)]="user.certificat">
-  </mat-form-field>
+  
+    <input type="file" placeholder="certificat" [(ngModel)]="user.certificat">
+  
 
 
   <button mat-raised-button  type="submit" (click)="add()">SIGN UP</button>

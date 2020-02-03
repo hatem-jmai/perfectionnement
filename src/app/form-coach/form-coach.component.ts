@@ -8,6 +8,7 @@ import {pipe} from 'rxjs';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {MatDatepickerInputEvent, MatDialog, MatDialogRef,MatFormFieldModule} from '@angular/material';
 import {error} from 'util';
+import { HttpClient } from '@angular/common/http';
 type Type = 'text' | 'password' ;
 
 /*
@@ -30,6 +31,22 @@ export function MustMatch(controlName: string, matchingControlName: string) {
     }
   };
 }*/
+export interface gouvernorat {
+  value: string;
+  viewValue: string;
+}
+export interface Ville {
+  value: string;
+  viewValue: string;
+}
+export interface genre {
+  value: string;
+  viewValue: string;
+}
+export interface type {
+  value: string;
+  viewValue: string;
+}
 
 
 @Component({
@@ -41,8 +58,10 @@ export class FormCoachComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
   select = new FormControl(null, [Validators.required]);
+  fileData: File = null;
   /*user: coach = new coach();
   registerForm: FormGroup;
+  
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
         this.email.hasError('email') ? 'Not a valid email' :
@@ -70,12 +89,34 @@ export class FormCoachComponent implements OnInit {
   });
   gender;
   
-
-
-
-  constructor(private formBuilder: FormBuilder, private userService: AuthService, public dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder,private http: HttpClient, private userService: AuthService, public dialog: MatDialog) {
   }
+  gouvernerats : gouvernorat[]= [
+    {value: 'Tunis', viewValue: 'Tunis'},
+    {value: 'Ariana', viewValue: 'Ariana'},
+    {value: 'Ben arous', viewValue: 'Ben arous'}
+  ];
+  villes :Ville[]=  [
+    {value: 'Ariana', viewValue: 'Raoued'},
+    {value: 'Ariana', viewValue: 'ghazela'},
+    {value: 'Tunis', viewValue: 'charguia'},
+    {value: 'Tunis', viewValue: 'Menzah'},
+    {value: 'Ben arous', viewValue: 'Ben arous'}
+  ];
+  gendre :genre[]=  [
+    {value: 'Man', viewValue: 'Man'},
+    {value: 'Women', viewValue: 'Women'},
+  ];
 
+  types:type[]= [
+    {value: 'Gaming', viewValue: 'Gaming'},
+    {value: 'Fitness', viewValue: 'Fitness'},
+    {value: 'Art', viewValue: 'Art'},
+    {value: 'Boxing', viewValue: 'Boxing'}
+];
+fileProgress(fileInput: any) {
+  this.fileData = <File>fileInput.target.files[0];
+}
   ngOnInit() {
     this.user = new coach();
     this.registerForm = this.formBuilder.group({
@@ -96,6 +137,7 @@ export class FormCoachComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
 
+
   date(e) {
     this.convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.registerForm.get('birthDate').setValue(this.convertDate, {
@@ -105,9 +147,18 @@ export class FormCoachComponent implements OnInit {
 
   add() {
     console.log(this.user);
-    this.userService.createcoach(this.user).subscribe(data => console.log(data), error1 => console.log(error1));
-    
+    this.userService.createcoach(this.user).subscribe(data => console.log(data), 
+    error1 => console.log(error1));
     this.registerForm.reset();
+
+    //image upload
+    const formData = new FormData();
+    formData.append('file', this.fileData);
+    this.http.post('http://localhost:3000/addcoachs', formData)
+      .subscribe(res => {
+        console.log(res);
+        alert('SUCCESS !!');
+      })
 }
 }
 
