@@ -1,92 +1,25 @@
-<div class="overlay">
-    <!-- LOGN IN FORM by Omar Dsoky -->
-    <form>
-       <!--   con = Container  for items in the form-->
-       <div class="con">
-       <!--     Start  header Content  -->
-       <header class="head-form">
-          <h2>Log In</h2>
-          <!--     A welcome message or an explanation of the login form -->
-          <p>login here using your mail and password</p>
-       </header>
-       <!--     End  header Content  -->
-       <br>
-       <div class="field-set">
-         
-          <!--   user name -->
-             <span class="input-item">
-               <i class="fa fa-user-circle"></i>
-             </span>
-            <!--   user name Input-->
-             <input class="form-input" id="txt-input" type="text" [(ngModel)]="user.login" [ngModelOptions]="{standalone: true}" placeholder="@Mail" required>
-         
-          <br>
-         
-               <!--   Password -->
-         
-          <span class="input-item">
-            <i class="fa fa-key"></i>
-           </span>
-          <!--   Password Input-->
-          <input class="form-input" type="password" placeholder="Password" id="pwd" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" name="password" required>
-         
-    <!--      Show/hide password  -->
-         <span>
-            <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
-         </span>
-         
-         
-          <br>
-    <!--        buttons -->
-    <!--      button LogIn -->
-          <button class="log-in"  (click)="login()"> Log In </button>
-       </div>
-      
-    <!--   other buttons -->
-       <div class="other">
-    <!--      Forgot Password button-->
-          <button class="btn submits frgt-pass">Forgot Password</button>
-    <!--     Sign Up button -->
-          <button class="btn submits sign-up" [routerLink]="['/signup']" routerLinkActive="active">Sign Up 
-    <!--         Sign Up font icon -->
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          </button>
-    <!--      End Other the Division -->
-       </div>
-         
-    <!--   End Conrainer  -->
-      </div>
-      
-      <!-- End Form -->
-    </form>
-    </div>
 
-    <script>
-    // Show/hide password onClick of button using Javascript only
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">   
 
-// https://stackoverflow.com/questions/31224651/show-hide-password-onclick-of-button-using-javascript-only
-
-function show() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'text');
-}
-
-function hide() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'password');
-}
-
-var pwShown = 0;
-
-document.getElementById("eye").addEventListener("click", function () {
-    if (pwShown == 0) {
-        pwShown = 1;
-        show();
-    } else {
-        pwShown = 0;
-        hide();
-    }
-}, false);
+<div class='hero'>
+  <div class="hero-one"></div>
+  <div class="hero-two"></div>
+  <h1 class="header-title">
+     <span class="header-primary">Login</span>
+     <input type='text' placeholder='Username' [(ngModel)]="user.login"
+        [ngModelOptions]="{standalone: true}" placeholder="User Name" required
+         class='input-line full-width'>
+        
+        <input type='password' placeholder='Password' type="password" placeholder="Password"  
+        [(ngModel)]="user.password" 
+        [ngModelOptions]="{standalone: true}" name="password" required 
+        class='input-line full-width'>
+        
+        <button class='ghost-round full-width' (click)="login()">Login</button>
+        
+     <span class="header-sub">and the underground secrets</span></h1>
+</div>
 
 
-    </script>
+<app-footer></app-footer>
+
