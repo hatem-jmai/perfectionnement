@@ -6389,6 +6389,7 @@
   .navbar {
     background-color: white;
     min-height: 3.25rem;
+    height: 0px;
     position: relative;
     z-index: 30;
   }
@@ -7124,6 +7125,7 @@
   }
   
   .navbar-menu {
+    
     display: none;
   }
   
@@ -7288,6 +7290,7 @@
       display: flex;
     }
     .navbar {
+      height: 90px;
       min-height: 3.25rem;
     }
     .navbar.is-spaced {
@@ -7351,7 +7354,13 @@
       pointer-events: auto;
       transform: translateY(0);
     }
+    .logo{
+      width: 90%;
+      margin-left: 20px;
+
+    }
     .navbar-menu {
+      margin-left: 100px;
       flex-grow: 1;
       flex-shrink: 0;
     }

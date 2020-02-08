@@ -89,7 +89,8 @@ export class FormCoachComponent implements OnInit {
   });
   gender;
   
-  constructor(private formBuilder: FormBuilder,private http: HttpClient, private userService: AuthService, public dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder,private http: HttpClient, 
+    private userService: AuthService, public dialog: MatDialog) {
   }
   gouvernerats : gouvernorat[]= [
     {value: 'Tunis', viewValue: 'Tunis'},
@@ -122,6 +123,7 @@ fileProgress(fileInput: any) {
     this.registerForm = this.formBuilder.group({
       name: [this.user.nom, [Validators.required]],
       lastname: [this.user.prenom, [Validators.required]],
+      login:[this.user.login,[Validators.required]],
       email: [this.user.adresse_mail, [Validators.required, Validators.email]],
       dateBirth: [this.user.date_naiss, [Validators.required]],
       gender: [this.user.genre, [Validators.required]],
